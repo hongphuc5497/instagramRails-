@@ -32,6 +32,11 @@
       <div class="description">
         <%= post.description %>
       </div>
+			<div class="tags">
+			<% post.hash_tags.each do |tag| %> 
+				<%= link_to "##{tag.name} ", post_path(post.user) %>
+			<% end %>
+			</div>
     </section>
   <% end %>
   <%= paginate @posts %>
