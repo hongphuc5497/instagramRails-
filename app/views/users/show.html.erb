@@ -48,7 +48,9 @@
   <% @posts.each do |post|%>
     <% if post.image.attached? %>
       <div class="wrapper">
-        <%=image_tag post.image %>
+        <%=link_to post_path(post) do %>
+          <%=image_tag post.image %>
+        <% end %>
       </div>
     <% end %>
   <% end %>
