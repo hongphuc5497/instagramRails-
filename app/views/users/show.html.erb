@@ -13,7 +13,7 @@
         </a>
       </div>
       <ul class="posts">
-        <li><span>12</span> posts</li>
+        <li><span><%= @posts.count %></span> posts</li>
         <li><span>195</span> followers</li>
         <li><span>345</span> following</li>
       </ul>
@@ -43,13 +43,11 @@
 </div>
 
 <div class="user-images">
-  <div class="wrapper">
-    <img src="https://cdn.stocksnap.io/img-thumbs/280h/R7IOD2W1ZU.jpg">
-  </div>
-  <div class="wrapper">
-    <img src="https://cdn.stocksnap.io/img-thumbs/280h/51IFMMFTD7.jpg">
-  </div>
-  <div class="wrapper">
-    <img src="https://cdn.stocksnap.io/img-thumbs/280h/PHLEPKWFB8.jpg">
-  </div>
+  <% @posts.each do |post|%>
+    <% if post.image.attached? %>
+      <div class="wrapper">
+        <%=image_tag post.image %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
