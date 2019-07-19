@@ -30,13 +30,14 @@
         <%= image_tag post.image, class: 'main-image' %>
       <% end %>
       <div class="description">
-        <%= post.description %>
+        <% post.description.to_s.split(' ').each do |word| %>
+          <% if word.start_with?('#') %>
+            <%= link_to word, search_path(query: word) %>
+          <%else %>
+            <%= word %>
+          <%end %>
+        <% end %>
       </div>
-			<div class="tags">
-			<% post.hash_tags.each do |tag| %> 
-				<%= link_to "##{tag.name} ", post_path(post.user) %>
-			<% end %>
-			</div>
     </section>
   <% end %>
   <%= paginate @posts %>
