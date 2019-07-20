@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
-    def show
-        @post = Post.find(params[:id])
-    end
+    before_action :find_post, only: [:show]
+    def show; end
 
     def create
         Post.create(post_params)
@@ -15,6 +14,10 @@ class PostsController < ApplicationController
         redirect_to user_path(current_user)
     end
     private
+
+    def find_post
+        @post = Post.find(params[:id])
+    end
 
     def post_params
         params.require(:post).permit(:description, :image, :user_id)
