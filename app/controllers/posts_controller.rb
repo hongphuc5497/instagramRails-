@@ -13,8 +13,9 @@ class PostsController < ApplicationController
 
         redirect_to user_path(current_user)
     end
-    private
 
+    private
+    
     def find_post
         @post = Post.find(params[:id])
     end
